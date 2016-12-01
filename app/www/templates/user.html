@@ -1,0 +1,56 @@
+<div class="bar bar-header bar-light head">
+    <h1 class="title">
+        User
+    </h1>
+</div>
+<ion-content overflow-scroll="false">
+    <div class="body">
+        <div class="item item-avatar usertop">
+            <img ng-src={{vm.data.img||vm.img}} class="rediuImg">
+                <h2>
+                    {{vm.data.name}}
+                </h2>
+                <p>
+               		{{vm.date|date:'yyyy-MM-dd hh:mm:ss'}}
+                </p>
+           
+        </div>
+        <div class=" ">
+            <section class="userSetion">
+                <div ng-repeat="money in vm.money" ng-click="vm.recharge(money)">
+                    {{money}}
+                </div>
+               
+            </section>
+            <setion class="userSetion">
+                <div class="user">
+                    <span class="icon ion-gear-a">
+                    </span>
+                    用户设置
+                </div>
+                <div class="payal">
+                     <span class="icon ion-social-yen">
+                    </span> 
+                    积分:{{vm.data.points}}
+                  
+                </div>
+            </setion>
+            <section class="userSetion" ng-click="vm.goInvite()">
+                <div>
+                    <span class="ionc ion-ios-paperplane-outline">
+                    </span>
+                    邀请
+                </div>
+            </section>
+            <section class="userSetion" ng-click="vm.goReviewed()" ng-if="vm.obj.RoleId==1">
+                <div>
+                    <span class="ionc ion-ios-paperplane-outline">
+                    </span>
+                   审核
+                </div>
+            </section>
+
+
+        </div>
+    </div>
+</ion-content>

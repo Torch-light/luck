@@ -1,0 +1,25 @@
+<div class="bar bar-header bar-light bottomborder">
+    <button class="button button-icon ion-ios-undo-outline" ng-click="vm.login()"></button>
+  <h1 class="title">register</h1>
+   
+</div>
+<ion-content overflow-scroll="false">
+<div class="swarp">
+ <div class="list">
+  <label class="item item-input">
+    <span class="input-label">用户名</span>
+    <input type="text" ng-model="vm.model.name">
+  </label>
+  <label class="item item-input">
+    <span class="input-label">密码</span>
+    <input type="password" ng-model="vm.model.password">
+  </label>
+  <label class="item item-input">
+    <span class="input-label">邀请码</span>
+    <input type="text" ng-model="vm.model.code">
+  </label>
+</div>
+<button class="button button-block button-dark" ng-click="vm.register()">注册</button>
+	
+</div>
+</ion-content>

@@ -1,0 +1,25 @@
+<div class="bar bar-header">
+    <a class="button button-icon icon ion-ios-undo-outline" href="/#/home/user">
+    </a>
+    <div class="h1 title">
+        待审核
+    </div>
+</div>
+<ion-content>
+    <div class="body">
+        <div class="reviewedSetion" ng-repeat="data in vm.data">
+            <div class="top">
+                用户:{{data.name}}
+            </div>
+            <div class="top">
+                时间:{{data.created_at|date:'yyyy-MM-dd hh:mm:ss'}}
+            </div>
+            <div>
+                充值金额:{{data.money}}
+            </div>
+            <div class="button button-calm button-small button-clear" ng-click="vm.submit(data,$index)">
+                确认
+            </div>
+        </div>
+    </div>
+</ion-content>

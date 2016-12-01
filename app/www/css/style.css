@@ -1,0 +1,343 @@
+/* Empty. Add your own CSS if you like */
+
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, form{margin:0;}  
+
+/*
+
+ionic  reset
+
+ */
+.item-avatar > img:first-child{
+	position: absolute;
+    top: 16px;
+    left: 16px;
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+    border-radius:50px;
+}
+.item-icon-left .icon, .item-icon-right .icon{
+	font-size: 1.5rem;
+}
+.bar .button, .bar button {
+	font-size: 0.1rem;
+}
+/*ionic reset end*/
+ol,ul{margin:0; padding:0;}
+/*swarp*/
+.swarp{
+	margin-top:10rem;
+	margin-bottom: 5%;
+}
+
+/*swarp*/
+/*head*/
+
+.usertop{
+	margin-bottom: 10px;
+}
+
+/*head end*/
+
+/*body */
+ion-content .body{
+	padding: 10px;
+	margin-top:43px;
+}
+.rediuImg{
+	border-radius:50px;
+}
+.body .ball{
+	display: inline-block;
+	width: 2.5rem;
+	height: 2.5rem;
+	/*border: 1px #28F4F3 solid;*/
+	border-radius: 25px;
+	text-align: center;
+	font-size: 1.3rem;
+	color: #fff;
+	background-color: #06D5F4;
+	line-height: 2.5rem;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-weight: bold;
+}
+.body .lastball{
+	display: inline-block;
+	width: 5rem;
+	height: 2.5rem;
+	/*border: 1px #28F4F3 solid;*/
+	border-radius: 25px;
+	text-align: center;
+	font-size: 1.3rem;
+	color: #fff;
+	background-color: #4216EA;
+	line-height: 2.5rem;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-weight: bold;
+}
+.body .actop {
+	margin: 0px;
+	text-align: center;;
+}
+.body .actop span{
+	font-size:1.2rem;
+}
+.body .parts{
+	/*border: #000 1px solid;*/
+	width: 95%;
+	margin: 10px auto ;
+}
+
+.body .balltable{
+	width: 100%;
+	text-align: center;
+	height: 200px;
+	font-style:normal
+}
+.body .balltable th{
+	padding: 5px;
+	font-size: 1.5rem;
+}
+.body .balltable td{
+	padding: 5px;
+	font-size: 1rem;
+}
+.body .userSetion{
+	display: flex;
+	border: 1px #ccc solid;
+	text-align: center;
+	line-height: 5em;
+	margin-bottom: 1em;
+}
+.body .inviteSetion{
+	display: flex;
+	/*border: 1px #ccc solid;*/
+	text-align: center;
+	line-height: 5em;
+	margin-bottom: 1em;
+}
+.body .userSetion div{
+	height: 5em;
+	flex: 1
+}
+.body .labelDiv{
+	flex-grow:4;	
+}
+.inlineButton{
+	flex-grow:1;
+	margin-left: 0.5rem;
+}
+.body .reviewedSetion{
+	flex-wrap: wrap;
+	display: flex;
+	border: 1px #ccc solid;
+	text-align: center;
+	line-height: 2.5em;
+	margin-bottom: 1em;
+}
+.body .reviewedSetion div{
+	width: 50%;
+	height: 2.5em;
+}
+.body .codeSetion{
+	flex-wrap:wrap;
+	display: flex;
+	text-align: center;
+}
+.body .codeSetion .codetext{
+	display: flex;;
+ 	flex-wrap:wrap;
+}
+.body .codeSetion .codetext p{
+	width: 63px;
+	flex: auto;
+	color:#CD0000;
+}
+.body .codeSetion .notCode{
+	color:#5CACEE;
+	padding: 0rem 0.5rem 0.5rem 0.5rem;
+	text-align: center;
+}
+.body .user{
+border-right: 1px #ccc solid;
+}
+.body .payal{
+}
+.body .list{
+	margin-top: 10em;
+}
+.body .list label span{
+	font-size: 0.75rem;
+
+}
+.body .right,.left{
+	font-size: 0.75rem;
+}
+@media screen and (max-height:630px) {
+    
+.body ion-scroll{
+	height: 150px;
+	width: 100%;
+	}
+}
+
+@media screen and (min-height:650px) {
+    
+.body ion-scroll{
+	height: 250px;
+	width: 100%;
+	}
+}
+
+@media screen and (min-height:630px) {
+    
+.body ion-scroll{
+	height: 230px;
+	width: 100%;
+	}
+}
+@media screen and (min-height:700px) {
+    
+.body ion-scroll{
+	height: 350px;
+	width: 100%;
+	}
+}
+
+.actionbody{
+    text-align: center;
+}
+.actionbody .card{
+    margin:0px auto;
+    padding: 0px;
+    width: 95%;
+    height: 200px;
+    border:#ccc 1px solid;
+    /*overflow: auto;*/
+}
+.actionbody .cardWin{
+	 margin-top: 50px;
+	 text-align: center;
+}
+.actionbody .card .me{
+    padding: 0px;
+    margin-right:0px;
+    text-align:right;
+    border: 0px;
+}
+.actionbody .card .other{
+    padding: 0px;
+    margin-right:0px;
+    text-align:left;
+      border: 0px;
+}
+.actionbody .card .item-avatar {
+    min-height: 25px;
+} 
+
+
+.actionbody .card .me p{
+    padding:2px;
+    padding-right: 15px;
+    line-height: 35px;
+}
+.actionbody .card .other p{
+    padding:2px;
+    padding-left: 15px;
+    line-height: 35px;
+}
+.actionbody .action .actionInput{
+   
+    padding: 5px 0px;
+}
+.cardScroll{
+    width: 100%;
+    height: 300px;
+}
+.actionbody .card  ion-scroll{
+    width: 100%;
+    height: 299px;
+    overflow-y:hidden;
+}
+/*body end*/
+
+/*foot*/
+ion-content .foot{
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+.footText{
+	margin: 0 auto;
+	font-size: 0.75rem;
+	color: #2720E2
+}
+.foot .footbtn{
+	height: 10px;
+	width: 100px;
+}
+
+/*foot end*/
+
+/*float box*/
+.isFloatBox{
+	width: 80%;
+	height: 200px;
+	position: fixed;
+	border-radius: 20px;
+	background: #fff;
+	top:150px;
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+	z-index:99999; 
+	opacity: 100%;
+	border: #ccc 1px solid;
+	/*text-align: center;*/
+}
+.isFloatBox .ball{
+	display: inline-block;
+	width: 2.5rem;
+	height: 2.5rem;
+	/*border: 1px #28F4F3 solid;*/
+	border-radius: 2.5rem;
+	text-align: center;
+	font-size: 1.3rem;
+	color: #fff;
+	background-color: #ccc;
+	line-height: 2.5rem;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-weight: bold;
+	border: 1px #ccc solid; 
+}
+
+.isFloatBox .ballactive{
+
+	background-color: #06D5F4;
+
+	/*background-color: #ccc;*/
+}
+.isFloatBox span{
+	padding-left: 20px;	
+	margin-top: 20px;
+	display: inline-block;
+}
+.isFloatBox .body span input{
+	width: 150px;
+	padding: 0px 10px;
+	border: 0px;
+	border-radius: 15px;
+    -webkit-appearance: none
+}
+.isFloatBox .inputDiv{
+	display: inline;
+	border: #ccc 1px solid;
+}
+/*float box end*/

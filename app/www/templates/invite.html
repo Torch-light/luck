@@ -1,0 +1,38 @@
+<div class="bar bar-header bar-light">
+    <a class="button button-icon icon ion-ios-undo-outline" href="/#/home/user">
+    </a>
+    <h1 class="title">
+        邀请
+    </h1>
+</div>
+<ion-content overflow-scroll="false">
+    <div class="body">
+        <div class="inviteSetion">
+            <label class="item item-input item-select labelDiv">
+                <select ng-change="vm.changeSelectNum(vm.num)" ng-model="vm.num" ng-options="num  for num in vm.selectNum">
+                </select>
+                <div class="input-label">
+                    生成激活码数量
+                </div>
+            </label>
+            <button class="button button-calm button-small inlineButton" ng-click="vm.submit()">
+                确认生成
+            </button>
+        </div>
+        <div class="codeSetion" ng-if="vm.notCode.length>0">
+            <div class="notCode">
+                <span>未使用</span>
+            </div>
+            <div class="codetext">
+                <p ng-repeat="data in vm.notCode">
+                    {{data.code}}
+                </p>
+            </div>
+        </div>
+        <div class="codeSetion">
+            <div class="codetext" ng-repeat="data in vm.code">
+            	<p>{{data}}</p>
+            </div>
+        </div>
+    </div>
+</ion-content>
