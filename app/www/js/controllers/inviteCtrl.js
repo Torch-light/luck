@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:53:55
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-11-29 11:01:07
+* @Last Modified time: 2016-12-02 11:09:29
 */
 (function(){
 'use strict';
@@ -31,6 +31,9 @@ controller('inviteCtrl', ['$state','$http','$scope','popTotas','utils','actionSe
 			name:vm.seeion.UserName,
 			roleId:vm.seeion.RoleId
 		}
+		vm.creatCode();
+	};
+	vm.creatCode=function(){
 		actionService.creteCode(vm.model).then(function(data){
 			if(data.code=="I00000"){
 				vm.code=data.data;
@@ -40,6 +43,18 @@ controller('inviteCtrl', ['$state','$http','$scope','popTotas','utils','actionSe
 		}).catch(function(err){
 			popTotas.error(err.message);
 		})
+
+	};
+	vm.getRecharegeTotal=function(){
+		userService.getRecharegeTotal({id:vm.seeion.Id}).then(function(data){
+			if(data.code="I00000"){
+
+			}else{
+				popTotas.error(data.message);
+			}
+		}).catch(function(err){
+			popTotas.error(err.message);
+		})		
 	};
 	vm.getNotCode=function(){
 		vm.model={

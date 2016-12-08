@@ -5,8 +5,15 @@
 </div>
 <ion-content  style="margin-top: 43px;">
 <div class="actionbody">
-    <p>
-        dsadsad
+  
+    <p class="resultTop">
+       当前期数：{{vm.result.id+1}}
+       <span ng-if="!vm.isOpen">开奖倒计时:{{vm.indexTime}}</span>
+       <span ng-if="vm.isOpen">正在开奖中.....</span>
+    </p>
+    <p class="resultTop">
+       上一期：{{vm.result.id}}
+       结果:{{vm.result.num}}
     </p>
     <div class="card cardWin">
         <ion-scroll>
@@ -29,7 +36,7 @@
 
     
     <!-- </ion-scroll> -->
-    <div class="action ">
+    <div class="action" ng-if="vm.isStop">
         <input class="actionInput" ng-model="vm.model.action">
             <button class="button button-outline button-positive button-small " ng-click="vm.action()">
                 下注
@@ -39,5 +46,8 @@
 </div>
     <div class="radius">
     	当前积分：{{vm.points}}
+    </div>
+     <div class="radius">
+        当前状态：{{vm.isMessage}}
     </div>
 </ion-content>

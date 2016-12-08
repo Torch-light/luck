@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:43:21
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-11-29 10:24:11
+* @Last Modified time: 2016-12-05 17:08:37
 */
 (function(){
 'use strict';
@@ -23,7 +23,11 @@ angular.module('luck')
 		submit:'api/submit',
 		getUsers:'api/users',
 		createCode:'api/addcode',
-		getCode:'api/getCode'
+		getCode:'api/getCode',
+		allTotal:'api/rechargetotal',
+		getHistory:'api/history',
+		getCathectic:'api/getHistory',
+		getAnarchy:'api/getAnarchy'
 	}
 	return {
 		baseApi:baseApi,

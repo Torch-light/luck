@@ -1,6 +1,7 @@
 (function() {
     'use strict';
-    angular.module('luck').factory('actionService', ['$q', 'apiCall', 'config', function($q, apiCall, config) {
+    angular.module('luck').factory('actionService', ['$q', 'apiCall', 'config','utils', 
+        function($q, apiCall, config,utils) {
         var service = apiCall('actionCtrl');
         var actionService = {
             filter: function($obj) {
@@ -43,6 +44,29 @@
                         return true;
                 }
             },
+            getTime: function() {
+               
+                if(utils.get('time')){
+                    return utils.get('time');
+                }
+                var d=new Date(),
+                houst = d.getHours(),
+                m=d.getMinutes(),
+                time = [],
+                minutes = m%5==0?m:(m+(5-m%5))
+                ;
+                while (houst < 24) {
+                 
+                    if (minutes >= 60) {
+                        houst += 1;
+                        minutes = 60;
+                    };
+                    time.push({h:houst,m:minutes});
+                    minutes += 5;
+                };
+                utils.set('time',time);
+                return time;
+            },
             addBets: function(model) {
                 var defer = $q.defer();
                 service(config.baseApi, config.api.addbets, model, 'post', true).success(function(data) {
@@ -70,6 +94,24 @@
                 });
                 return defer.promise;
             },
+            getCathectic: function(model) {
+                var defer = $q.defer();
+                service(config.baseApi, config.api.getCathectic, model, 'get', true).success(function(data) {
+                    defer.resolve(data);
+                }).error(function(data) {
+                    defer.reject(data);
+                });
+                return defer.promise;
+            },
+            getAnarchy:function(model){
+                var defer = $q.defer();
+                service(config.baseApi, config.api.getAnarchy, model, 'get', true).success(function(data) {
+                    defer.resolve(data);
+                }).error(function(data) {
+                    defer.reject(data);
+                });
+                return defer.promise;
+            }
         }
         return actionService;
     }])

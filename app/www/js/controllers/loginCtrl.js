@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:51:37
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-11-28 16:19:39
+* @Last Modified time: 2016-12-03 14:26:12
 */
 
 (function(){
@@ -41,7 +41,6 @@ angular.module('luck')
 	};
 	vm.getDate=function(){
 		loginService.login(vm.model).then(function(data){
-
 			if(data.code=="I00000"){
 					utils.set('token',data.data)
 					$state.go('home.user')

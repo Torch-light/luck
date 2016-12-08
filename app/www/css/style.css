@@ -38,6 +38,7 @@ ol,ul{margin:0; padding:0;}
 	margin-bottom: 10px;
 }
 
+
 /*head end*/
 
 /*body */
@@ -63,6 +64,10 @@ ion-content .body{
 	margin-left: 5px;
 	margin-right: 5px;
 	font-weight: bold;
+}
+.body .topText{
+	font-size: 0.45rem;
+	display: inline-block;
 }
 .body .lastball{
 	display: inline-block;
@@ -143,6 +148,7 @@ ion-content .body{
 .body .reviewedSetion div{
 	width: 50%;
 	height: 2.5em;
+	font-size: 0.75rem;
 }
 .body .codeSetion{
 	flex-wrap:wrap;
@@ -212,6 +218,11 @@ border-right: 1px #ccc solid;
 .actionbody{
     text-align: center;
 }
+
+.actionbody .resultTop{
+	font-size: 0.75rem;
+	margin-bottom: 0.75rem;
+}
 .actionbody .card{
     margin:0px auto;
     padding: 0px;
@@ -221,7 +232,6 @@ border-right: 1px #ccc solid;
     /*overflow: auto;*/
 }
 .actionbody .cardWin{
-	 margin-top: 50px;
 	 text-align: center;
 }
 .actionbody .card .me{
