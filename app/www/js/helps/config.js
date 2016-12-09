@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:43:21
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-12-05 17:08:37
+* @Last Modified time: 2016-12-09 17:01:57
 */
 (function(){
 'use strict';
@@ -27,7 +27,8 @@ angular.module('luck')
 		allTotal:'api/rechargetotal',
 		getHistory:'api/history',
 		getCathectic:'api/getHistory',
-		getAnarchy:'api/getAnarchy'
+		getAnarchy:'api/getAnarchy',
+		getNum:'api/getNum'
 	}
 	return {
 		baseApi:baseApi,

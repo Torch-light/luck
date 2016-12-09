@@ -5,6 +5,7 @@
         var service = apiCall('actionCtrl');
         var actionService = {
             filter: function($obj) {
+                debugger;
                 if (!$obj.action.match(/(大单|大双|小单|小双|[0-9]+操|大|小|单|双|极大|极小)[0-9]+/)) {
                     return true;
                 }
@@ -24,11 +25,11 @@
                         $obj.multiple = 4;
                         break;
                     case '单':
-                        break;
+                       
                     case '双':
-                        break;
+                       
                     case '大':
-                        break;
+                       
                     case '小':
                         $obj.multiple = 2;
                         break;
@@ -106,6 +107,15 @@
             getAnarchy:function(model){
                 var defer = $q.defer();
                 service(config.baseApi, config.api.getAnarchy, model, 'get', true).success(function(data) {
+                    defer.resolve(data);
+                }).error(function(data) {
+                    defer.reject(data);
+                });
+                return defer.promise;
+            },
+            getNum:function(model){
+                var defer = $q.defer();
+                service(config.baseApi, config.api.getNum, model, 'get', true).success(function(data) {
                     defer.resolve(data);
                 }).error(function(data) {
                     defer.reject(data);

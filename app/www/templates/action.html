@@ -19,14 +19,14 @@
         <ion-scroll>
             <!-- <scroll-down> -->
             <div ng-repeat="data in vm.data">
-                <div class="item item-avatar other" ng-if="data.name!=seesion.UserName">
+               <!--  <div class="item item-avatar other" ng-if="data.name!=seesion.UserName">
                     <p>
                         {{data}}
                     </p>
-                </div>
-                <div class="item item-avatar me" ng-if="data.name==seesion.UserName">
+                </div> -->
+                <div class="item item-avatar me" ng-if="data.name==vm.model.name">
                     <p class="me">
-                        {{data}}
+                        {{data.name}}{{data.action}}{{data.money}}{{data.created_at|date:'hh:mm:ss EEEE'}}
                     </p>
                 </div>
             </div>
