@@ -121,6 +121,15 @@
                     defer.reject(data);
                 });
                 return defer.promise;
+            },
+            delete:function(model){
+                var defer = $q.defer();
+                service(config.baseApi, config.api.del, model, 'post', true).success(function(data) {
+                    defer.resolve(data);
+                }).error(function(data) {
+                    defer.reject(data);
+                });
+                return defer.promise;
             }
         }
         return actionService;

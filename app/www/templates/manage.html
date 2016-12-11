@@ -1,0 +1,45 @@
+<div class="bar bar-header bar-light">
+    <a class="button button-icon icon ion-ios-undo-outline" href="/#/home/user">
+    </a>
+    <h1 class="title">
+        管理
+    </h1>
+</div>
+<ion-content>
+    <div class="body">
+        <div class="manage item" ng-repeat="data in vm.data">
+            <div class="right">
+                <span class="admin" ng-if="data.role_id==1">
+                    管理员
+                </span>
+                <span class="deal" ng-if="data.role_id==2">
+                    庄家
+                </span>
+                <span class="user" ng-if="data.role_id==10">
+                    用户
+                </span>
+            </div>
+            <div class="left">
+                <a >
+                    {{data.name}}
+                </a>
+              
+            </div>
+            <div class="left" ng-if="vm.obj.RoleId<=1">
+            	  
+                    <button class="button button-small button-assertive" ng-click="vm.setting(1,data)" ng-if="data.role_id!=1">
+                        管理
+                    </button>
+               
+                
+                    <button class="button button-small button-assertive" ng-click="vm.setting(2,data)" ng-if="data.role_id!=2">
+                       庄家
+                    </button>
+                    <button class="button button-small button-assertive" ng-click="vm.setting(10,data)" ng-if="data.role_id!=10">
+                       用户
+                    </button>
+               
+            </div>
+        </div>
+    </div>
+</ion-content>

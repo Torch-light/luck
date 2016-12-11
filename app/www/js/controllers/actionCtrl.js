@@ -2,7 +2,7 @@
  * @Author: torchlight
  * @Date:   2016-11-18 23:53:55
  * @Last Modified by:   Weetao
- * @Last Modified time: 2016-12-09 20:32:16
+ * @Last Modified time: 2016-12-11 22:34:38
  */
 (function() {
     'use strict';
@@ -12,8 +12,8 @@
      * Description
      */
     angular.module('luck').
-    controller('actionCtrl', ['$state', '$scope', 'utils', 'actionService', 'popTotas', 'userService',
-        function($state, $scope, utils, actionService, popTotas, userService) {
+    controller('actionCtrl', ['$state', '$scope','socket','utils', 'actionService', 'popTotas', 'userService',
+        function($state, $scope,socket,utils, actionService, popTotas, userService) {
             var vm = this;
             var seesion = utils.get('token');
             var date = new Date(),
@@ -31,6 +31,21 @@
                 id: seesion.Id,
                 num: ''
             };
+            if(seesion.RoleId==10){
+
+                 socket.onAction(seesion.mark);
+            }else if(seesion.RoleId<=1){
+                socket.onAction(0);
+            }else{
+                socket.onAction(seesion.Id);
+            }
+           
+            $scope.$on('updateAction',function(event,data){
+                if(data.name!=seesion.UserName){
+
+                vm.data.unshift(data);
+                }
+            })
             // vm.Time = actionService.getTime();
             vm.init = function() {
                 date = new Date();
@@ -38,20 +53,25 @@
                 if (m % 5 == 0 && !vm.isOpen) {
                     vm.indexTime = 60 - date.getSeconds();
                 } else {
-                    vm.indexTime = ((5 - m % 5) * 60 - date.getSeconds()) + 63;
+                    vm.indexTime = ((5 - m % 5) * 60 - date.getSeconds()) + 68;
                 };
-                if (vm.indexTime < 45||!vm.isStop) {
-                            popTotas.info('封盘禁止下注');
-                            vm.isStop = false;
-                            vm.isMessage = "封盘禁止下注";
+                if (vm.indexTime < 45) {
+                    popTotas.info('封盘');
+                    vm.isStop = false;
+                    vm.isMessage = "封盘";      
                 }
                 var loop = setInterval(function() {
                     if (vm.indexTime > 0) {
                         vm.indexTime--;
-                        
+                        if(vm.indexTime < 45){
+                            vm.isStop = false;
+                            if(vm.isMessage != "封盘"){
+
+                            vm.isMessage = "封盘"; 
+                            }
+                        }
                     } else {
                         clearInterval(loop);
-                        vm.getLoop();
                         // vm.init();
                     }
                     $scope.$apply()
@@ -74,7 +94,7 @@
             };
             vm.action = function() {
                 if (!vm.isStop) {
-                    popTotas.error('已经封盘，禁止操作');
+                    popTotas.error('已经封盘');
                 }
                 var bol = actionService.filter(vm.model);
                 if (bol) {
@@ -92,26 +112,29 @@
             vm.getNum = function() {
                 actionService.getCathectic().then(function(data) {
                     if (data.code == "I00000") {
-                        if (!vm.result) {
-                            vm.result = data.data;
-                             vm.getAllNum({num:vm.result.id+1});
-                        } else {
-                            timeMax++;
-                            if(timeMax>=10){
-                                clearInterval(loopGet);
-                                popTotas.error('超时');
-                                return false;
-                            }
-                            if (data.data.id != vm.result.id) {
-                                vm.result = data.data;
-                                vm.isOpen = false;
-                                vm.isStop = true;
-                                vm.isMessage = "可以下注";
-                                if (loopGet) {
-                                    clearInterval(loopGet);
-                                }
-                            }
-                        }
+                        vm.result = data.data;
+                        vm.getAllNum()
+                        // } else {
+                        //     if( vm.isMessage != "获取结果"){
+
+                        //     vm.isMessage = "获取结果";  
+                        //     }
+                        //     timeMax++;
+                        //     if(timeMax>=10){
+                        //         clearInterval(loopGet);
+                        //         popTotas.error('超时');
+                        //         return false;
+                        //     }
+                        //     if (data.data.id != vm.result.id) {
+                        //         vm.result = data.data;
+                        //         vm.isOpen = false;
+                        //         vm.isStop = true;
+                        //         vm.isMessage = "可以下注";
+                        //         if (loopGet) {
+                        //             clearInterval(loopGet);
+                        //         }
+                        //     }
+                        // }
                     } else {
                         popTotas.error(data.message);
                     }
@@ -121,11 +144,16 @@
             };
             vm.addBets = function() {
                 vm.model.num = vm.result.id+1;
+                if(vm.model.money<50){
+                    popTotas.error('下注金额不能低于50');
+                    return false;
+                }
                 actionService.addBets(vm.model).then(function(data) {
                     if (data.code == "I00000") {
-                       
+                        vm.data.unshift(data.data);
                         vm.model.action = "";
-                        vm.points = data.data;
+                        vm.points = vm.points-vm.model.money;
+                        popTotas.success(data.message);
                     } else {
                         popTotas.error(data.message);
                     }
@@ -133,44 +161,43 @@
                     popTotas.error(err.message)
                 });
             };
-            vm.getLoop = function() {
-                vm.isOpen = true;
-                vm.isStop = false;
-                vm.init();
-                loopGet = setInterval(function() {
-                    vm.getNum();
-                }, 10000)
-            };
-            vm.getAction = function() {
+            // vm.seconeos = function() {
+            //     var loop = setInterval(function() {
+            //         if (vm.indexTime > 0) {
+            //             vm.indexTime--;
+            //         } else {
+            //             clearInterval(loop);
+            //             vm.getLoop();
+            //             // vm.init();
+            //         }
+            //         $scope.$apply()
+            //     }, 1000)
+            // };
+            vm.delete=function(n){
+                var num={
+                    num:n.id
+                }
+                actionService.delete(num).then(function(data) {
+                    if (data.code == "I00000") {
+                         vm.getPoints();
+                         vm.getAllNum();
+                        popTotas.success(data.message);
 
-                actionService.getAction({
-                    num: vm.result.id
-                }).then(function(data) {
-                    if (data.code == "I00000") {} else {
+                    } else {
                         popTotas.error(data.message);
                     }
                 }).catch(function(err) {
                     popTotas.error(err.message)
                 });
             }
-            vm.seconeos = function() {
-                var loop = setInterval(function() {
-                    if (vm.indexTime > 0) {
-                        vm.indexTime--;
-                    } else {
-                        clearInterval(loop);
-                        vm.getLoop();
-                        // vm.init();
-                    }
-                    $scope.$apply()
-                }, 1000)
-            };
             vm.getSystemAnarchy = function() {
                 actionService.getAnarchy().then(function(data) {
                     if (data.code == "I00000") {
                         vm.system = data.data.updateNum;
                         if (vm.system) {
-                            vm.getLoop();
+                            if( vm.isMessage != "获取结果"){
+                            vm.isMessage = "获取结果";  
+                            }
                         } else {
                             vm.init();
                         }
@@ -181,9 +208,13 @@
                     popTotas.error(err.message)
                 });
             };
-            vm.getAllNum=function(obj){
+            vm.getAllNum=function(){
+
                 if(!vm.isStop){
                     return false;
+                }
+                var obj={
+                    num:vm.result.id+1
                 }
                 actionService.getNum(obj).then(function(data){
                      if (data.code == "I00000") {
@@ -198,10 +229,7 @@
             vm.getNum();
             vm.getPoints();
             vm.getSystemAnarchy();
-            // var loopGetAllNum = setInterval(function() {
-
-            //         vm.getAllNum({num:vm.result.id+1});
-            // }, 10000)
+         
         }
     ])
 })();

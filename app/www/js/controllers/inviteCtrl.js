@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:53:55
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-12-02 11:09:29
+* @Last Modified time: 2016-12-10 11:48:45
 */
 (function(){
 'use strict';
@@ -18,7 +18,7 @@ controller('inviteCtrl', ['$state','$http','$scope','popTotas','utils','actionSe
 	vm.num=vm.selectNum[0];
 	vm.seeion=utils.get('token');
 	vm.submit=function(){
-		if(vm.seeion.RoleId!=1){
+		if(vm.seeion.RoleId>2){
 			popTotas.error('没有权限');
 			return  false;
 		}
@@ -57,10 +57,7 @@ controller('inviteCtrl', ['$state','$http','$scope','popTotas','utils','actionSe
 		})		
 	};
 	vm.getNotCode=function(){
-		vm.model={
-			name:vm.seeion.UserName
-		}
-		actionService.getCode(vm.model).then(function(data){
+		actionService.getCode().then(function(data){
 			if(data.code=="I00000"){
 				vm.notCode=data.data;
 			}else{

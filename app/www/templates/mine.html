@@ -1,0 +1,23 @@
+<div class="bar bar-header bar-light">
+  <a class="button button-icon icon ion-ios-undo-outline" href="/#/home/user">
+    </a>
+  <h1 class="title">投注记录</h1>
+	
+</div>
+<ion-content>
+<div class="body">
+
+<div class="card history" ng-repeat="data in vm.data">
+  <div class="item item-text-wrap history">
+  <span>我的投注:{{data.action}}</span><span>期数:{{data.num}}</span>
+   <br>
+  <span>金额:￥{{data.money}}</span><span>倍数:{{data.multiple}}</span>
+  <br>
+  
+   <span>时间:{{data.created_at}}</span>
+   <span ng-if="data.prize" class="prize">中奖了</span>
+  </div>
+</div>
+
+</div>
+</ion-content>

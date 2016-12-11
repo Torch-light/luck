@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:53:00
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-11-29 14:26:58
+* @Last Modified time: 2016-12-10 11:13:31
 */
 (function(){
 'use strict';
@@ -24,7 +24,7 @@ controller('registerCtrl', ['$state','userService','popTotas', function($state,u
 	};
 	vm.register=function(){
 		userService.register(vm.model).then(function(data){
-			if(data=="I00000"){
+			if(data.code=="I00000"){
 				popTotas.success(data.message);
 				$state.go('login');
 			}else{

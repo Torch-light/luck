@@ -184,6 +184,59 @@ border-right: 1px #ccc solid;
 .body .right,.left{
 	font-size: 0.75rem;
 }
+.body .manage span{
+	text-align: center;
+	color: #fff;
+	display: inline-block;
+	border-radius: 20%;
+	font-size: 0.75rem;
+	width: 2.5rem;
+}
+.body .manage {
+	display: flex;
+	flex-flow: row wrap;
+}
+.body .manage .right{
+	flex-grow:1;
+}
+.body .manege .middle{
+	flex-grow:3;	
+}
+
+.body .manage  .left{
+	flex-grow:2;
+	text-align: center;
+
+
+}
+.body .manage  .left  .button-small  {
+	font-size: 0.2rem;
+	min-width: 10px;
+    min-height: 10px;
+    width: 4rem;
+    height:2rem;
+}
+.body .manage  .admin{
+	
+	background-color: #6666ff;
+	
+}
+.body .manage  .user{
+	
+	background-color: #33ccff;
+	
+}
+.body .manage .deal{
+	
+	background-color: #3399ff;
+	
+}
+.body .manage  a{
+	font-size: 0.75rem;
+}
+.body .manage .item .name{
+	padding:0rem 0.75rem;
+}
 @media screen and (max-height:630px) {
     
 .body ion-scroll{
@@ -252,18 +305,21 @@ border-right: 1px #ccc solid;
 
 
 .actionbody .card .me p{
-    padding:2px;
+  	padding-top: 0.5rem;
     padding-right: 15px;
-    line-height: 35px;
 }
 .actionbody .card .other p{
-    padding:2px;
+	padding-top: 0.5rem;
     padding-left: 15px;
-    line-height: 35px;
 }
 .actionbody .action .actionInput{
    
-    padding: 5px 0px;
+    padding: 5px 10px;
+}
+
+.actionbody .action {
+   
+    padding: 10px 0px;
 }
 .cardScroll{
     width: 100%;
@@ -274,6 +330,65 @@ border-right: 1px #ccc solid;
     height: 299px;
     overflow-y:hidden;
 }
+.actionbody .num {
+}
+.actionbody .numWarp {
+	justify-content: center;
+	display: flex;
+	flex-wrap:wrap;
+}
+.actionbody .num .del{
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 25%;
+}
+.actionbody .num .numChild{
+	margin:0.5rem;
+	flex-grow:1;
+	padding: 0.5rem;
+	border-radius: 25%;
+	max-width: 80px;
+	background-color: #C3F0F9;
+
+}
+.history span{
+	display: inline-block;
+	padding: 0.5rem;
+}
+
+.historyPar {
+	display: flex;
+}
+.historyPar .historyl{
+	flex-grow:5;
+	display: flex;
+	background: 1px solid #ccc;
+}
+.historyPar .historyl span{
+	display: inline-block;
+	width: 100px;
+	
+}
+.historyPar .historyr{
+	flex-grow:4;
+	background: 1px solid #fff;
+}
+
+.prize{
+	text-align: center;
+	position: absolute;
+	font-size: 0.8rem;
+	width: 60px;
+	height: 60px;
+	right: 30px;
+	top: 30px;
+	display: block;
+	border: 1px solid #FFC0CB;
+	color:#fff;
+	background-color: #FFC0CB;
+	border-radius: 50%;
+	line-height: 45px;
+}
 /*body end*/
 
 /*foot*/
@@ -282,6 +397,8 @@ ion-content .foot{
 	text-align: center;
 	margin-top: 20px;
 }
+
+
 .footText{
 	margin: 0 auto;
 	font-size: 0.75rem;
@@ -349,5 +466,34 @@ ion-content .foot{
 .isFloatBox .inputDiv{
 	display: inline;
 	border: #ccc 1px solid;
+}
+.actionFoot {
+	width:100%;
+	text-align: center;
+}
+.actionFoot p{
+	padding: 0.5rem;
+}
+.actionFoot .radiusl{
+	text-align: center;
+	border:1px solid #ccc;
+	width: 100px;
+	height: 100px;	
+	border-radius: 50%;
+	text-indent: 50px;
+}
+.actionFoot .radiusr{
+	background-color:#C5C2F9;
+	 display: table-cell;
+	text-align: center;
+	border:1px solid #ccc;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;	
+}
+.actionFoot .radiusr span{
+	display: inline-block;
+	line-height: 100px;
+	font-size: 0.5rem;
 }
 /*float box end*/

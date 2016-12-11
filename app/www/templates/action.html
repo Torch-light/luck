@@ -3,51 +3,73 @@
         bar-light
     </h1>
 </div>
-<ion-content  style="margin-top: 43px;">
-<div class="actionbody">
-  
-    <p class="resultTop">
-       当前期数：{{vm.result.id+1}}
-       <span ng-if="!vm.isOpen">开奖倒计时:{{vm.indexTime}}</span>
-       <span ng-if="vm.isOpen">正在开奖中.....</span>
-    </p>
-    <p class="resultTop">
-       上一期：{{vm.result.id}}
+<ion-content style="margin-top: 43px;">
+    <div class="actionbody">
+        <p class="resultTop">
+            当前期数：{{vm.result.id+1}}
+            <span ng-if="!vm.isOpen">
+                开奖倒计时:{{vm.indexTime}}
+            </span>
+            <span ng-if="vm.isOpen">
+                正在开奖中.....
+            </span>
+        </p>
+        <p class="resultTop">
+            上一期：{{vm.result.id}}
        结果:{{vm.result.num}}
-    </p>
-    <div class="card cardWin">
-        <ion-scroll>
-            <!-- <scroll-down> -->
-            <div ng-repeat="data in vm.data">
-               <!--  <div class="item item-avatar other" ng-if="data.name!=seesion.UserName">
-                    <p>
-                        {{data}}
-                    </p>
-                </div> -->
-                <div class="item item-avatar me" ng-if="data.name==vm.model.name">
-                    <p class="me">
-                        {{data.name}}{{data.action}}{{data.money}}{{data.created_at|date:'hh:mm:ss EEEE'}}
-                    </p>
+        </p>
+        <div class="card cardWin">
+            <ion-scroll>
+                <!-- <scroll-down> -->
+                <div ng-repeat="data in vm.data">
+                    <div class="item item-avatar other" ng-if="data.name!=vm.model.name">
+                        <p>
+                            {{data.created_at|date:'hh:mm:ss EEEE'}}
+                            <br>
+                                {{data.name}}:{{data.action}}{{data.money}}
+                            
+                        </p>
+                    </div>
+                    <div class="item item-avatar me" ng-if="data.name==vm.model.name">
+                        <p class="me">
+                            {{data.created_at|date:'hh:mm:ss EEEE'}}
+                            <br>
+                                {{data.name}}:{{data.action}}￥{{data.money}}
+                            
+                        </p>
+                    </div>
                 </div>
+            </ion-scroll>
+            <!-- </scroll-down> -->
+        </div>
+        <!-- </ion-scroll> -->
+        <div class="action" ng-if="vm.isStop">
+            <input class="actionInput" ng-model="vm.model.action">
+                <button class="button button-outline button-positive button-small " ng-click="vm.action()">
+                    下注
+                </button>
+           
+        </div>
+        <div class="num">
+            <div class="numWarp">
+            <div class="numChild" ng-if="data.name==vm.model.name" ng-repeat="data in vm.data">
+               
+                <span>
+                    {{data.action}}-{{data.money}}
+                </span>
+                 <span class="del" ng-if="vm.isStop" ng-click="vm.delete(data)">
+                    删除
+                </span>
             </div>
-        </ion-scroll>
-        <!-- </scroll-down> -->
+        </div>
+        </div>
     </div>
-
-    
-    <!-- </ion-scroll> -->
-    <div class="action" ng-if="vm.isStop">
-        <input class="actionInput" ng-model="vm.model.action">
-            <button class="button button-outline button-positive button-small " ng-click="vm.action()">
-                下注
-            </button>
-      
-    </div>
-</div>
-    <div class="radius">
-    	当前积分：{{vm.points}}
-    </div>
-     <div class="radius">
-        当前状态：{{vm.isMessage}}
+    <div class="actionFoot">
+        <p>
+            当前积分:{{vm.points}}
+        </p>
+        <p>
+            当前状态:{{vm.isMessage}}
+        </p>
     </div>
 </ion-content>

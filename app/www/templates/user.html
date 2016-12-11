@@ -23,10 +23,10 @@
                
             </section>
             <setion class="userSetion">
-                <div class="user">
+                <div class="user" ng-click="vm.gomanage()" ng-if="vm.obj.RoleId<3">
                     <span class="icon ion-gear-a">
                     </span>
-                    用户设置
+                    用户管理
                 </div>
                 <div class="payal">
                      <span class="icon ion-social-yen">
@@ -35,14 +35,14 @@
                   
                 </div>
             </setion>
-            <section class="userSetion" ng-click="vm.goInvite()">
+            <section class="userSetion" ng-click="vm.goInvite()" ng-if="vm.obj.RoleId<=2">
                 <div>
                     <span class="ionc ion-ios-paperplane-outline">
                     </span>
                     邀请
                 </div>
             </section>
-            <section class="userSetion" ng-click="vm.goReviewed()" ng-if="vm.obj.RoleId==1">
+            <section class="userSetion" ng-click="vm.goReviewed()" ng-if="vm.obj.RoleId<=2">
                 <div>
                     <span class="ionc ion-ios-paperplane-outline">
                     </span>

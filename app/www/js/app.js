@@ -123,6 +123,18 @@ angular.module('luck', ['ionic','ngAnimate','toastr'])
       templateUrl:'templates/invite.html',
       controller:'inviteCtrl as vm'
     })
+     .state('manage',{
+      url:'/manage',
+      cache:false,
+      templateUrl:'templates/manage.html',
+      controller:'manageCtrl as vm'
+    })
+       .state('mineHistory',{
+      url:'/mine',
+      cache:false,
+      templateUrl:'templates/mine.html',
+      controller:'mineHistoryCtrl as vm'
+    })
     $urlRouterProvider.otherwise('/login');
   // $urlRouterProvider.otherwise('/login');
 
