@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:53:55
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-11-28 15:48:00
+* @Last Modified time: 2016-12-18 18:13:23
 */
 (function(){
 'use strict';
@@ -12,11 +12,26 @@
 * Description
 */
 angular.module('luck').
-controller('reviewedCtrl', ['$state','utils','reviewedService','popTotas', function($state,utils,reviewedService,popTotas){
+controller('reviewedCtrl', ['$state','$scope','utils','reviewedService','popTotas', 'socket',
+	function($state,$scope,utils,reviewedService,popTotas,socket){
 	var vm=this;
+	vm.obj = utils.get('token');
+	  if (vm.obj.RoleId <=1) {
+                socket.onRechange(0);
+      		}else{
+                socket.onRechange(vm.obj.Id);
+     }
+	 $scope.$on('updateRechange', function(event, data) {
+                if (vm.obj.RoleId < 3&&data!=true) {
+                	vm.data.unshift(data);
+                	popTotas.success('有用户充值');
+                }
+     });
 	vm.getAll=function(){
-		
-		reviewedService.getAll().then(function(data){
+		vm.model={
+			type:'rechange'
+		}
+		reviewedService.getAll(vm.model).then(function(data){
 			if(data.code=="I00000"){
 				vm.data=data.data;
 			}else{

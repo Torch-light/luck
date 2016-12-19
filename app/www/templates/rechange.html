@@ -1,0 +1,85 @@
+<div class="bar bar-header bar-light">
+    <a class="button button-icon icon ion-ios-undo-outline" href="/#/home/user">
+    </a>
+    <h1 class="title">
+        充值
+    </h1>
+</div>
+<ion-content class="has-header has-footer">
+    <div>
+        <div class="list">
+            <div class="list">
+                <div class="item item-input-inset">
+                充值金额
+                    <label class="item-input-wrapper">
+                        <input placeholder="金额" type="number" ng-model="vm.money">
+                        
+                    </label>
+
+                </div>
+            </div>
+            <!-- <select ng-model="vm.defalutMoney" ng-options="money for money in vm.money">
+                </select> -->
+        </div>
+    </div>
+<!--     <div class="card">
+        <div class="item item-text-wrap cash">
+            <div class="cashLeft">
+                <p>
+                    打款至以下账户
+                    <p>
+                    </p>
+                    <span>
+                        微信:{{result.wechat}}
+                    </span>
+                    <p>
+                    </p>
+                    <span>
+                        支付宝:{{result.ispay}}
+                    </span>
+                </p>
+              
+            </div>
+        </div>
+    </div> -->
+     <div class="card" ng-if="vm.data[0]">
+        <div class="item item-text-wrap cash">
+            <div class="cashLeft">
+            
+                 <p>
+                    充值记录
+                    <p>
+                    </p>
+                    <span>
+                        金额:{{vm.data[0].money}}
+                    </span>
+                    <p>
+                    </p>
+                    <span ng-if="vm.data[0].ispass==1">
+                        状态:已经通过
+                    </span>
+                    <p>
+                    </p>
+                    <span ng-if="vm.data[0].ispass==0">
+                        状态:待审核
+                    </span>
+                     <p>
+                    </p>
+                    <span >
+                        创建时间:{{vm.data[0].created_at}}
+                    </span>
+                </p>
+            </div>
+        
+            	   <button class="button button-small button-assertive" ng-click="vm.del(vm.data[0])" >
+                       删除
+                    </button>
+            
+        </div>
+    </div>
+</ion-content>
+<div class="bar bar-footer">
+    <button class="button button-block button-positive" ng-click="vm.recharge()" ng-disabled="!vm.money>0">
+        确定
+    </button>
+</div>

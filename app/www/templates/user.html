@@ -16,12 +16,7 @@
            
         </div>
         <div class=" ">
-            <section class="userSetion">
-                <div ng-repeat="money in vm.money" ng-click="vm.recharge(money)">
-                    {{money}}
-                </div>
-               
-            </section>
+         
             <setion class="userSetion">
                 <div class="user" ng-click="vm.gomanage()" ng-if="vm.obj.RoleId<3">
                     <span class="icon ion-gear-a">
@@ -42,11 +37,35 @@
                     邀请
                 </div>
             </section>
-            <section class="userSetion" ng-click="vm.goReviewed()" ng-if="vm.obj.RoleId<=2">
+            <section class="userSetion" ng-if="vm.obj.RoleId<=2">
+                <div  ng-click="vm.goReviewed(1)">
+                    <span class="ionc ion-ios-paperplane-outline">
+                    </span>
+                   审核充值
+                </div>
+                <div ng-click="vm.goReviewed(2)">
+                    <span class="ionc ion-ios-paperplane-outline">
+                    </span>
+                   审核提现
+                </div>
+            </section>
+             <section class="userSetion"  ng-if="vm.obj.RoleId==10">
+                <div ng-click="vm.goCash()">
+                    <span class="ionc ion-ios-paperplane-outline">
+                    </span>
+                   提现
+                </div>
+                <div ng-click="vm.rechange()">
+                    <span class="ionc ion-ios-paperplane-outline">
+                    </span>
+                   充值
+                </div>
+            </section> 
+            <section class="userSetion" ng-click="vm.goMine()" >
                 <div>
                     <span class="ionc ion-ios-paperplane-outline">
                     </span>
-                   审核
+                   我的投注记录
                 </div>
             </section>
 

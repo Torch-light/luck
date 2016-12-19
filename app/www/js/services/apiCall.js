@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-19 22:01:23
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-11-27 13:32:40
+* @Last Modified time: 2016-12-17 18:35:45
 */
 
 (function(){
@@ -54,6 +54,8 @@ factory('apiCall', ['$q','$http', '$state','$location','utils',
 				var token=utils.get('token').Token;
 				if(token){
 					$http.defaults.headers.common.Authorization = 'Bearer ' + token || null;
+				}else{
+					$state.go('login');
 				};
 			};
 		};

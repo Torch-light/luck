@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-18 23:43:21
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-12-11 16:30:03
+* @Last Modified time: 2016-12-18 22:11:22
 */
 (function(){
 'use strict';
@@ -13,31 +13,40 @@
 */
 angular.module('luck')
 .factory('config', [function(){
-	var baseApi='http://localhost:8865/';
+	var url="http://www.torchlight.top:8808"
+	var baseApi="http://www.torchlight.top/api/"
+	// var url='http://localhost:8808';
+	// var baseApi='http://localhost:8865/api/';
 	var Api={
 		// login:'api/event',
-		login:'api/login',
-		register:'api/register',
-		addbets:'api/addbets',
-		recharge:'api/recharge',
-		reviewed:'api/reviewed',
-		submit:'api/submit',
-		getUsers:'api/users',
-		createCode:'api/addcode',
-		getCode:'api/getCode',
-		allTotal:'api/rechargetotal',
-		getHistory:'api/history',
-		getCathectic:'api/getHistory',
-		getAnarchy:'api/getAnarchy',
-		getNum:'api/getNum',
-		getAllUser:'api/allusers',
-		seetingUser:'api/seeting',
-		del:'api/delaction',
-		action:'api/action'
+		login:'login',
+		register:'register',
+		addbets:'addbets',
+		recharge:'recharge',
+		reviewed:'reviewed',
+		submit:'submit',
+		getUsers:'users',
+		createCode:'addcode',
+		getCode:'getCode',
+		allTotal:'rechargetotal',
+		getHistory:'history',
+		getCathectic:'getHistory',
+		getAnarchy:'getAnarchy',
+		getNum:'getNum',
+		getAllUser:'allusers',
+		seetingUser:'seeting',
+		del:'delaction',
+		action:'action',
+		cash:'cash',
+		getCash:'getcash',
+		setCash:'setcash',
+		getRechange:'getRechange',
+		delChange:'delChange'
 	}
 	return {
 		baseApi:baseApi,
-		api:Api
+		api:Api,
+		url:url
 	}
 }])
 

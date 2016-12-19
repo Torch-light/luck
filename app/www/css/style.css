@@ -21,7 +21,10 @@ ionic  reset
 	font-size: 1.5rem;
 }
 .bar .button, .bar button {
-	font-size: 0.1rem;
+	font-size: 0.75rem;
+}
+.button.button-block, .button.button-full{
+	margin-top:0px; 
 }
 /*ionic reset end*/
 ol,ul{margin:0; padding:0;}
@@ -133,6 +136,15 @@ ion-content .body{
 .body .labelDiv{
 	flex-grow:4;	
 }
+.table{
+	width: 100%;
+}
+.table .tableONEtd{
+	font-size: 0.6rem;
+} 
+.table td{
+	padding-top: 2rem;
+}
 .inlineButton{
 	flex-grow:1;
 	margin-left: 0.5rem;
@@ -149,6 +161,39 @@ ion-content .body{
 	width: 50%;
 	height: 2.5em;
 	font-size: 0.75rem;
+}
+.historyTop{
+	text-align: center;
+}
+.historyTopSpan{
+	margin-top: 1rem;
+	display: inline-block;
+	border: 1px #ccc solid;
+	width: 5rem;
+	height: 2rem;
+	line-height: 2rem;
+	border-radius: 45%;
+	color: #000;
+	
+}
+.table th{
+	font-size: 0.85rem;
+}
+.table .tableTbody tr td{
+	text-align: center;
+	
+}
+.table .tableTbody tr span{
+	font-size: 0.6rem;
+	display: inline-block;
+	border: 1px #ccc solid;
+	width: 1.7rem;
+	border-radius: 50%;
+	background-color: red;
+	color: #fff;
+}
+.active {
+	background-color:#99FFFF;
 }
 .body .codeSetion{
 	flex-wrap:wrap;
@@ -210,7 +255,7 @@ border-right: 1px #ccc solid;
 
 }
 .body .manage  .left  .button-small  {
-	font-size: 0.2rem;
+	font-size: 0.7rem;
 	min-width: 10px;
     min-height: 10px;
     width: 4rem;
@@ -237,6 +282,22 @@ border-right: 1px #ccc solid;
 .body .manage .item .name{
 	padding:0rem 0.75rem;
 }
+.cash {
+	display: flex;
+	flex-wrap: wrap;
+}
+.cash .cashRight{
+flex-grow: 2;
+}
+.cash .cashRight button{
+	min-width: 0.5rem;
+	width: 4rem;
+}
+.cash .cashLeft{
+
+	flex-grow: 2;
+}
+
 @media screen and (max-height:630px) {
     
 .body ion-scroll{

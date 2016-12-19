@@ -2,7 +2,7 @@
  * @Author: torchlight
  * @Date:   2016-11-18 23:53:55
  * @Last Modified by:   Weetao
- * @Last Modified time: 2016-12-11 20:29:43
+ * @Last Modified time: 2016-12-18 11:04:12
  */
 (function() {
     'use strict';
@@ -24,15 +24,7 @@
                 vm.date = new Date();
                 $scope.$apply()
             }, 1000)
-            if (vm.obj.RoleId < 3) {
-                socket.onRechange(vm.obj.Id);
-            }
-            $scope.$on('updateRechange', function(event, data) {
-                if (vm.obj.RoleId < 3&&data!=vm.obj.Id) {
-                    popTotas.info('有用户充值');
-                }
-
-            })
+   
             vm.recharge = function(money) {
                 vm.model = {
                     money: money,
@@ -59,14 +51,26 @@
                     popTotas.error(err.message);
                 })
             };
-            vm.goReviewed = function() {
+            vm.goReviewed = function(n) {
+                if(n==1)
                 $state.go('reviewed');
+                if(n==2)
+                $state.go('reviewedcash');
             };
             vm.goInvite = function() {
                 $state.go('invite');
             };
             vm.gomanage = function() {
                 $state.go('manage');
+            };
+            vm.goCash=function(){
+                $state.go('cash');   
+            };
+            vm.goMine=function(){
+            $state.go('mineHistory');
+            };
+            vm.rechange=function(){
+              $state.go('rechange');  
             }
             vm.getUsers();
         }

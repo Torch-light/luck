@@ -1,0 +1,35 @@
+<div class="bar bar-header">
+    <a class="button button-icon icon ion-ios-undo-outline" href="/#/home/user">
+    </a>
+    <div class="h1 title">
+        审核提现
+    </div>
+</div>
+<ion-content>
+    <div class="body">
+        <div class="reviewedSetion" ng-repeat="data in vm.data">
+            <div class="top">
+            <span >用户</span>:{{data.name}}
+            </div>
+            <div class="top">
+                时间:{{data.created_at|date:'yyyy-MM-dd hh:mm:ss'}}
+            </div>
+            <div>
+                提现金额:{{data.money}}
+              
+            </div> 
+            <div>
+                  提现账号:{{data.number}}
+
+            </div>
+            <div>
+            方式:<span ng-if="data.cashtype==0">微信</span>
+            <span ng-if="data.cashtype==1">支付宝</span>
+
+            </div>
+            <div class="button button-calm button-small button-clear" ng-click="vm.submit(data,$index)">
+                确认
+            </div>
+        </div>
+    </div>
+</ion-content>

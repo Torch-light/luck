@@ -2,7 +2,7 @@
 * @Author: torchlight
 * @Date:   2016-11-19 22:37:57
 * @Last Modified by:   Weetao
-* @Last Modified time: 2016-12-10 20:27:47
+* @Last Modified time: 2016-12-18 12:24:53
 */
 
 (function(){
@@ -55,6 +55,24 @@
 			getAction:function(param){
 				var defer=$q.defer();
 				service(config.baseApi,config.api.action,param,'get',true).success(function(data){
+					defer.resolve(data);
+				}).error(function(data){
+					defer.reject(data);
+				});
+				return defer.promise;
+			},
+			getRechange:function(param){
+				var defer=$q.defer();
+				service(config.baseApi,config.api.getRechange,param,'get',true).success(function(data){
+					defer.resolve(data);
+				}).error(function(data){
+					defer.reject(data);
+				});
+				return defer.promise;
+			},
+			delChange:function(param){
+				var defer=$q.defer();
+				service(config.baseApi,config.api.delChange,param,'post',true).success(function(data){
 					defer.resolve(data);
 				}).error(function(data){
 					defer.reject(data);

@@ -1,0 +1,76 @@
+<div class="bar bar-header bar-light">
+    <a class="button button-icon icon ion-ios-undo-outline" href="/#/home/user">
+    </a>
+    <h1 class="title">
+        提现
+    </h1>
+</div>
+<ion-content class="has-header has-footer">
+    <div>
+        <div class="list">
+         
+           
+          <div class="item item-input-inset">
+               提现金额
+                    <label class="item-input-wrapper">
+                       <input placeholder="金额" type="number" ng-model="vm.defalutMoney">
+                        
+                    </label>
+
+                </div>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    提现到
+                </div>
+                <select ng-model="vm.defalutCashType" ng-options="cashtype.name for cashtype in vm.cashType">
+                </select>
+            </label>
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input ng-model="vm.cashUser" placeholder="输入账号" type="text">
+                    </input>
+                </label>
+                <!--   <button class="button button-small" ng-click="vm.submit()">
+      Submit
+    </button> -->
+            </div>
+        </div>
+    </div>
+    <div class="card" ng-repeat="data in vm.data">
+        <div class="item item-text-wrap cash">
+            <div class="cashLeft">
+                <p>
+                    提现方式:
+                    <span ng-if="data.cashtype==0">
+                        微信
+                    </span>
+                    <span ng-if="data.cashtype==1">
+                        支付宝
+                    </span>
+                    提现金额:
+                    <span>
+                        {{data.money}}
+                    </span>
+                    <p>
+                    </p>
+                </p>
+                 账号:
+                <span>
+                    {{data.number}}
+                </span>
+            </div>
+<!--             <div class="cashRight">
+               
+                 <button class="button button-small button-assertive">
+               删除
+            </button> -->
+            </div>
+          
+        </div>
+    </div>
+</ion-content>
+<div class="bar bar-footer">
+    <button class="button button-block button-positive" ng-click="vm.submit()" ng-disabled="!vm.cashUser.length>0">
+        确定
+    </button>
+</div>

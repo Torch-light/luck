@@ -5,7 +5,6 @@
         var service = apiCall('actionCtrl');
         var actionService = {
             filter: function($obj) {
-                debugger;
                 if (!$obj.action.match(/(大单|大双|小单|小双|[0-9]+操|大|小|单|双|极大|极小)[0-9]+/)) {
                     return true;
                 }

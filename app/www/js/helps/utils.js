@@ -1,8 +1,8 @@
 /*
  * @Author: torchlight
  * @Date:   2016-11-19 22:18:15
- * @Last Modified by:   torchlight
- * @Last Modified time: 2016-11-20 00:08:35
+ * @Last Modified by:   Weetao
+ * @Last Modified time: 2016-12-18 22:10:08
  */
 
 
@@ -117,6 +117,14 @@
 
 				},
 				get: function(key) {
+					if(key=='token'){
+						if(window.sessionStorage.getItem(key)){
+							return JSON.parse(window.sessionStorage.getItem(key));
+						}else{
+							utils.clearAll();
+							$state.go('login');
+						}
+					}
 					if (window.sessionStorage) {
 						return JSON.parse(window.sessionStorage.getItem(key));
 					}
